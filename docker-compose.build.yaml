@@ -1,0 +1,22 @@
+version: "3.7"
+services:
+  proxy: 
+    build: 
+      context: ./zeus-proxy
+      dockerfile: ./Dockerfile
+    image: zeuscloudhq/zeuscloud-proxy:${BUILD_VERSION}
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: ./Dockerfile
+    image: zeuscloudhq/zeuscloud-frontend:${BUILD_VERSION}
+  backend:
+    build:
+      context: ./backend
+      dockerfile: ./Dockerfile
+    image: zeuscloudhq/zeuscloud-backend:${BUILD_VERSION}
+  cartography:
+    build:
+      context: ./cartography
+      dockerfile: ./Dockerfile
+    image: zeuscloudhq/zeuscloud-cartography:${BUILD_VERSION}

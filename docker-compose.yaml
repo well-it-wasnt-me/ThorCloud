@@ -1,0 +1,132 @@
+version: '3.7'
+services:
+  postgres:
+    image: postgres:14.6-alpine
+    restart: unless-stopped
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    networks:
+      - app_network
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  neo4j:
+    image: neo4j:4.4.14-community
+    restart: unless-stopped
+    volumes:
+      - neo4j_conf:/conf
+      - neo4j_data:/data
+      - neo4j_import:/import
+      - neo4j_logs:/logs
+      - neo4j_plugins:/plugins
+    environment:
+      # Raise memory limits:
+      - NEO4J_dbms_memory_pagecache_size=250m
+      - NEO4J_dbms.memory.heap.initial_size=250m
+      - NEO4J_dbms_memory_heap_max__size=250m
+      # Auth:
+      - NEO4J_AUTH=none
+      # Add APOC and GDS:
+      - apoc.export.file.enabled=true
+      - apoc.import.file.enabled=true
+      - apoc.import.file.use_neo4j_config=true
+      - NEO4JLABS_PLUGINS=["graph-data-science", "apoc"]
+      - NEO4J_dbms_security_procedures_allowlist=gds.*, apoc.*
+      - NEO4J_dbms_security_procedures_unrestricted=gds.*, apoc.*
+      # Networking:
+      - dbms.connector.bolt.listen_address=0.0.0.0:7687
+    networks:
+      - app_network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:7474"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  cartography:
+    image: zeuscloudhq/zeuscloud-cartography:${PULL_VERSION}
+    entrypoint: ["gunicorn", "--bind=0.0.0.0:6000", "cartography.wsgi:app"]
+    environment:
+      - CARTOGRAPHY_NEO4J_URI=${NEO4J_URI}
+      - CARTOGRAPHY_VERBOSE=False
+      - CARTOGRAPHY_IAMSPY_DIRECTORY=/root/iamspy
+    networks:
+      - app_network
+    init: true
+    restart: on-failure
+    depends_on:
+      - neo4j
+    volumes:
+      - ${AWS_DIRECTORY}:/root/.aws
+      - iamspy:/root/iamspy
+
+  frontend:
+    image: zeuscloudhq/zeuscloud-frontend:${PULL_VERSION}
+    # If you add any environment variable here, you must add a row to
+    # frontend/.env
+    environment:
+      - REACT_APP_API_DOMAIN=${REACT_APP_API_DOMAIN}
+      - REACT_APP_ENVIRONMENT=${MODE}
+      - REACT_APP_POSTHOG_API_KEY=${POSTHOG_API_KEY}
+      - REACT_APP_POSTHOG_HOST=${POSTHOG_HOST}
+      - REACT_APP_TELEMETRY_ENABLED=${TELEMETRY_ENABLED}
+    networks:
+      - app_network
+    depends_on:
+      - backend
+
+  backend:
+    image: zeuscloudhq/zeuscloud-backend:${PULL_VERSION}
+    environment:
+      - WEBSITE_DOMAIN=${WEBSITE_DOMAIN}
+      - NEO4J_URI=${NEO4J_URI}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_HOST=postgres
+      - POSTGRES_PORT=5432
+      - CARTOGRAPHY_URI=${CARTOGRAPHY_URI}
+      - MODE=${MODE}
+    networks:
+      - app_network
+    depends_on:
+      - postgres
+      - neo4j
+      - cartography
+  
+  proxy:
+    image: zeuscloudhq/zeuscloud-proxy:${PULL_VERSION}
+    depends_on:
+      - backend
+      - frontend
+    networks:
+      - app_network
+    ports:
+      - 80:80
+
+networks:
+  app_network:
+    driver: bridge
+
+volumes:
+  postgres:
+    driver: local
+  neo4j_conf:
+    driver: local
+  neo4j_data:
+    driver: local
+  neo4j_import:
+    driver: local
+  neo4j_logs:
+    driver: local
+  neo4j_plugins:
+    driver: local
+  iamspy:
+    driver: local
