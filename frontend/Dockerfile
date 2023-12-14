@@ -1,4 +1,4 @@
-FROM node:18.13-alpine as builder
+FROM node:21.4-alpine as builder
 WORKDIR /usr/src/app
 COPY package.json .
 RUN yarn install
