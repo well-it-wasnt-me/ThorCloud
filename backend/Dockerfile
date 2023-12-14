@@ -7,7 +7,7 @@ COPY . .
 RUN go mod download
 RUN go build -o /main
 
-FROM alpine:3.14
+FROM alpine:3.19
 COPY --from=builder /main /main
 CMD [ "/main" ]
 EXPOSE 8080
