@@ -1,7 +1,7 @@
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://user-images.githubusercontent.com/20483346/222834423-7fc33c17-c599-43c5-827d-ea4183a8b6f2.png" height="80">
-    <img alt="logo" src="https://user-images.githubusercontent.com/20483346/222834439-0cbf26d7-eaa6-462c-9438-e3a91a02c7d2.png" height="80">
+    <source media="(prefers-color-scheme: dark)" srcset="https://github.com/well-it-wasnt-me/ThorCloud/assets/15037424/c3b34bcf-a097-4813-9872-9435812f331d" height="400">
+    <img alt="logo" src="https://github.com/well-it-wasnt-me/ThorCloud/assets/15037424/c3b34bcf-a097-4813-9872-9435812f331d" height="400">
   </picture>
   <p align="center">
     <em>Secure your cloud.</em>
@@ -32,6 +32,6 @@ This is a reviving attempt of the Project ZeusCloud, [here](https://github.com/Z
 
 ## How to Help
 - Pick a random issue in the Issues page
-- [Join slack](https://join.slack.com/t/opensource-osp5634/shared_invite/zt-292mlna6b-KSXN4TLHojD9pbjyVu1g7g))
+- [Join slack](https://join.slack.com/t/opensource-osp5634/shared_invite/zt-292mlna6b-KSXN4TLHojD9pbjyVu1g7g)
 - Use the Project tab
 - Smoke signal ! Pick one !
