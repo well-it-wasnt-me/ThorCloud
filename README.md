@@ -29,6 +29,7 @@ This is a reviving attempt of the Project ZeusCloud, [here](https://github.com/Z
 - Integrate GCP, Azure and Hetzner Cloud
 - Better report export (pdf and html)
 - Integration with [SysReptor](https://github.com/Syslifters/sysreptor)
+- ~~Eridacate telemetry~~
 
 ## How to Help
 - Pick a random issue in the Issues page
