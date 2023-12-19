@@ -57,7 +57,7 @@
     ]
   },
   "devDependencies": {
-    "@types/js-yaml": "^4.0.5",
+    "@types/js-yaml": "^4.0.9",
     "@types/react-syntax-highlighter": "^15.5.11",
     "@types/react-table": "^7.7.12",
     "@types/yamljs": "^0.2.34",
