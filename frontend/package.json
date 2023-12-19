@@ -5,10 +5,10 @@
   "dependencies": {
     "@antv/g6": "^4.8.10",
     "@headlessui/react": "^1.7.17",
-    "@heroicons/react": "^2.0.18",
+    "@heroicons/react": "^2.1.1",
     "@material-tailwind/react": "^2.1.7",
     "@tailwindcss/forms": "^0.5.7",
-    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/jest-dom": "^6.1.5",
     "@testing-library/react": "^14.1.2",
     "@testing-library/user-event": "^14.5.1",
     "@types/jest": "^27.0.1",
@@ -57,9 +57,9 @@
     ]
   },
   "devDependencies": {
-    "@types/js-yaml": "^4.0.5",
+    "@types/js-yaml": "^4.0.9",
     "@types/react-syntax-highlighter": "^15.5.11",
-    "@types/react-table": "^7.7.12",
+    "@types/react-table": "^7.7.18",
     "@types/yamljs": "^0.2.34",
     "autoprefixer": "^10.4.16",
     "postcss": "^8.4.32",
