@@ -11,7 +11,6 @@ import { AlertSlideover } from './AlertsSlideover';
 import { TextInput } from "../Shared/Input";
 import { extractServiceName } from "../../utils/utils";
 import ColoredBgSpan from '../Shared/ColoredBgSpan';
-import posthog from 'posthog-js'
 import {createSearchParams, useNavigate, useSearchParams } from 'react-router-dom';
 export const severityColorMap:{[label:string]:string}={
     "Critical":"red",
@@ -214,7 +213,6 @@ const AlertsTableOps = ({ruleCategory,selectedAlertInstance,selectedRuleAlertGro
             const navigateSlideoverAlertFn = function(currAlertInstance: alert_instance) {
                 
                 // @ts-ignore
-                posthog.capture(`${window._env_.REACT_APP_ENVIRONMENT} Alert Row Clicked`,{environment: window._env_.REACT_APP_ENVIRONMENT})
                 navigate({
                     pathname:`/alerts/${ruleCategory}/${encodeURIComponent(activeAlertInfo.rule_data.uid)}/${encodeURIComponent(currAlertInstance.resource_id)}`,
                     search: `?${createSearchParams(queryParams)}`                    

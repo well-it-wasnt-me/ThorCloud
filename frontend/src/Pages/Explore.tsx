@@ -13,7 +13,6 @@ import { TableComp, TableRow } from "../Components/Shared/Table";
 import { assetToObjects } from "../Components/AssetsInventory/AssetCategoryMap";
 import DisplayEdgeInfo from "../Components/Explore/EdgeInfo/displayEdgeInfo";
 import RadioComp from "../Components/Shared/RadioComp";
-import posthog from 'posthog-js'
 
 async function getExploreAssetInfo(setExploreAssetInfo: any) {
     try {
@@ -407,8 +406,6 @@ export default function Explore() {
                                             <li key={assetObj.id} className="p-2.5 cursor-pointer hover:bg-gray-50 border-b border-gray-100">
                                                 <div className="text-sm"
                                                     onClick={() => {
-                                                        // @ts-ignore
-                                                        posthog.capture(`${window._env_.REACT_APP_ENVIRONMENT} Asset Selected in Access Explorer`,{environment: window._env_.REACT_APP_ENVIRONMENT})
                                                         setSearchFilter("");
                                                         setAsset(assetObj);
                                                         setSelected(true);

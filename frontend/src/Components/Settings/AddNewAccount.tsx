@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { classNames } from '../../utils/utils'
 
 import axios from 'axios';
-import posthog from 'posthog-js'
 import Select,{ StylesConfig } from 'react-select';
 
 interface AccountDetailsSubmission {
@@ -35,11 +34,8 @@ async function addAccountDetails({accountName, connectionMethod, profile, awsAcc
             vulnerability_scan:vulnerabilityScan
         }
         await axios.post(addAccountDetailsEndpoint, accountDetails);
-        // @ts-ignore
-        posthog.capture(`${window._env_.REACT_APP_ENVIRONMENT} Add Account`,{status:"Successful",environment: window._env_.REACT_APP_ENVIRONMENT})
+
     } catch (error) {
-         // @ts-ignore
-        posthog.capture(`${window._env_.REACT_APP_ENVIRONMENT} Add Account`,{status:"Unsuccessful",environment: window._env_.REACT_APP_ENVIRONMENT})
         if (axios.isAxiosError(error)) {
             if (error.response && error.response.data) {
                 return message = "Encountered an error in submitting account details: " + error.response.data

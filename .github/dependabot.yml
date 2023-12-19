@@ -41,7 +41,7 @@ updates:
       separator: "-"
 
   - package-ecosystem: "docker"
-    directory: "zeus-proxy/"
+    directory: "thor-proxy/"
     schedule:
       interval: "daily"
     pull-request-branch-name:
