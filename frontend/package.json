@@ -6,7 +6,7 @@
     "@antv/g6": "^4.8.10",
     "@headlessui/react": "^1.7.14",
     "@heroicons/react": "^2.0.18",
-    "@material-tailwind/react": "^1.4.2",
+    "@material-tailwind/react": "^2.1.7",
     "@tailwindcss/forms": "^0.5.7",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^14.1.2",
@@ -24,13 +24,13 @@
     "react-markdown": "9.0.1",
     "react-router-dom": "^6.10.0",
     "react-scripts": "5.0.1",
-    "react-select": "^5.7.3",
+    "react-select": "^5.8.0",
     "react-syntax-highlighter": "^15.5.0",
     "react-table": "^7.8.0",
     "rehype-raw": "^7.0.0",
     "remark-gfm": "^3.0.1",
     "typescript": "^5.3.3",
-    "web-vitals": "^2.1.0",
+    "web-vitals": "^3.5.0",
     "yamljs": "^0.3.0"
   },
   "scripts": {
@@ -59,7 +59,7 @@
   },
   "devDependencies": {
     "@types/js-yaml": "^4.0.5",
-    "@types/react-syntax-highlighter": "^15.5.6",
+    "@types/react-syntax-highlighter": "^15.5.11",
     "@types/react-table": "^7.7.12",
     "@types/yamljs": "^0.2.34",
     "autoprefixer": "^10.4.16",
