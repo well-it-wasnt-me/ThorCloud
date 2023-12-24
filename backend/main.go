@@ -6,16 +6,16 @@ import (
 	"os"
 	"time"
 
-	"github.com/Zeus-Labs/ZeusCloud/control"
-	"github.com/Zeus-Labs/ZeusCloud/models"
-	"github.com/Zeus-Labs/ZeusCloud/rules"
-	"github.com/Zeus-Labs/ZeusCloud/rules/types"
-	"github.com/Zeus-Labs/ZeusCloud/rules/vulnerability"
+	"control"
+	"models"
+	"rules"
+	"rules/types"
+	"rules/vulnerability"
 
-	"github.com/Zeus-Labs/ZeusCloud/constants"
-	"github.com/Zeus-Labs/ZeusCloud/db"
-	"github.com/Zeus-Labs/ZeusCloud/handlers"
-	"github.com/Zeus-Labs/ZeusCloud/middleware"
+	"constants"
+	"db"
+	"handlers"
+	"middleware"
 )
 
 const scanStatusInterval = 5 * time.Second
