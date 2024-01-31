@@ -59,7 +59,7 @@
   "devDependencies": {
     "@types/js-yaml": "^4.0.9",
     "@types/react-syntax-highlighter": "^15.5.11",
-    "@types/react-table": "^7.7.18",
+    "@types/react-table": "^7.7.19",
     "@types/yamljs": "^0.2.34",
     "autoprefixer": "^10.4.16",
     "postcss": "^8.4.33",
