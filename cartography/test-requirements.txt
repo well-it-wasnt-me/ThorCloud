@@ -2,7 +2,7 @@ backoff>=2.1.2
 pre-commit
 pytest>=6.2.4
 pytest-mock
-pytest-cov==4.1.0
+pytest-cov==5.0.0
 
 types-PyYAML
 types-requests
